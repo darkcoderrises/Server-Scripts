@@ -1,0 +1,65 @@
+services:
+    -   
+        name: ttyd
+        port: 8081
+        command: /usr/local/bin/ttyd -p 8081 tmux new -A -s gotty
+        url: terminal.mukulhase.com
+        uses_ws: True
+        has_auth: True
+    -   
+        name: messengerbot
+        port: 8082
+        command: cd /home/ubuntu/services/messengerbot/; pm2 start server.js
+        url: messenger.mukulhase.com
+        uses_ws: False
+        has_auth: False
+    -   
+        name: messbot
+        port: 8083
+        command: echo "TODO"
+        url: messbot.mukulhase.com
+        uses_ws: False
+        has_auth: False
+    -   
+        name: tmate-slave
+        port: 8084
+        command: sudo ./tmate-slave -p 8084
+        url: 
+        uses_ws: False
+        has_auth: False
+    -
+        name: Pebble Messenger Server
+        port: 8086
+        url: pebblemessenger.mukulhase.com
+        uses_ws: True
+        has_auth: True
+    -
+        name: GoogleMusicImport
+        port: 8085
+        command: /bin/bash -c 'export FLASK_APP=/home/ubuntu/services/YoutoPlay/server.py;/usr/local/bin/flask run -p 8085'
+        workingdirectory: /home/ubuntu/services/YoutoPlay
+        url: music.mukulhase.com
+        uses_ws: False
+        has_auth: True
+    -
+        name: DeezerLoaderServer
+        port: 8086
+        command: /bin/bash -c '/home/ubuntu/.nvm/versions/node/v8.6.0/bin/node server.js;'
+        workingdirectory: /home/ubuntu/services/deezloader-server/
+        url: deezerloader.mukulhase.com
+        uses_ws: True
+        has_auth: True
+    -
+        name: RachnasWebsite
+        port: 8087
+        command: /bin/bash -c '/home/ubuntu/.nvm/versions/node/v8.6.0/bin/node temp.js;'
+        workingdirectory: /home/ubuntu/services/rachna/
+        url: rachna.mukulhase.com
+        uses_ws: False
+        has_auth: False
+    -
+        name: Redir
+        port: 8088
+        url: redir.mukulhase.com
+        uses_ws: False
+        has_auth: False

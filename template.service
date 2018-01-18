@@ -1,0 +1,21 @@
+# systemd unit file
+# place in /etc/systemd/system
+# systemctl enable gotty.service
+# systemctl start gotty.service
+
+[Unit]
+Description={{ name }}
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+
+Environment=TERM=xterm-256color
+{% if workingdirectory %}
+WorkingDirectory={{ workingdirectory }} 
+{% endif %}
+ExecStart={{ command }}
+
+[Install]
+WantedBy=multi-user.target
